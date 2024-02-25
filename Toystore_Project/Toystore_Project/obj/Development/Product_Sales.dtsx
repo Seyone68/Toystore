@@ -1,0 +1,1587 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/19/2021 8:32:19 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-3QUOD1RH"
+  DTS:CreatorName="LAPTOP-3QUOD1RH\ACER"
+  DTS:DTSID="{9B52C229-FF4F-4B65-B3C0-0FD28929F8D3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{09FFFF0B-EEBE-433B-8337-6B51EC25C02C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0F831D73-43AD-454C-9C7B-3B3B3F91359C}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore_Target">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-3QUOD1RH;Initial Catalog=ToyStore_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sales Aggregation for Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9D7A5189-E577-4F1F-B244-B734D8FF72A3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sales Aggregation for Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Sales Aggregation for Product\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1].Columns[Prod_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Prod_Name"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Prod_Name]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1].Columns[Qty]"
+                      cachedDataType="i4"
+                      cachedName="Qty"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1].Columns[Total_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Total_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output].Columns[Total_Price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_ID]"
+                      name="Prod_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_Name]"
+                      name="Prod_Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Prod_Name]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]"
+                      dataType="i8"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]"
+                      name="Qty">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Qty]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Price]"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output].Columns[Total_Price]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Aggregation for Product\Orders Dim"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Orders Dim"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Orders_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Aggregation for Product\Orders Dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Ord_ID]"
+                      length="20"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_ID]"
+                      name="Ord_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Ord_Date]"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_Date]"
+                      name="Ord_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Delv_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Delv_Date]"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Delv_Date]"
+                      name="Delv_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      name="Cust_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      name="Prod_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      length="20"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      name="Promo_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Ord_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Ord_Date]"
+                      dataType="dbDate"
+                      name="Ord_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Delv_Date]"
+                      dataType="dbDate"
+                      name="Delv_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cust_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Ord_ID]"
+                      name="Ord_ID" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Ord_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Ord_Date]"
+                      name="Ord_Date" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Delv_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Delv_Date]"
+                      name="Delv_Date" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      name="Cust_ID" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      name="Prod_ID" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      name="Promo_ID" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Aggregation for Product\Product Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Product Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Product_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Product_Dim]) [refTable]
+where [refTable].[Prod_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Prod_ID" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Prod_Name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Prod_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Prod_Cat" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Available_Qty" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Unit_Price" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Aggregation for Product\Product Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Prod_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Prod_Name]"
+                      name="Prod_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Prod_Name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Unit_Price</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Aggregation for Product\Product Sales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Product Sales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product_Sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Aggregation for Product\Product Sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_ID]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].Columns[Prod_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Prod_Name"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Prod_Name]"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_Name]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].Columns[Qty]"
+                      cachedDataType="i8"
+                      cachedName="Qty"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Unit_Price]"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Unit_Price]" />
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].Columns[Total_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Total_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Total_Price]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Prod_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      dataType="i8"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Unit_Price]"
+                      dataType="numeric"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      dataType="numeric"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Product Sales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Product Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Product Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Product Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Aggregation for Product\Sales Fact Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Sales Fact Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Sales_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Sales_Fact]) [refTable]
+where [refTable].[Ord_ID] = ? and [refTable].[Ord_Date] = ? and [refTable].[Cus_No] = ? and [refTable].[Prod_ID] = ? and [refTable].[Promo_Code] = ? and [refTable].[Unit_Price] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Cus_No" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Cus_Name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Date_Key" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ord_ID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ord_Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Prod_ID" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Prod_Name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Qty" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Promo_Code" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Discount" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Unit_Price" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Total_Price" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Store_No" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Store_City" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_ID]};#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_Date]};#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Cust_ID]};#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]};#{Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Promo_ID]};#{Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Ord_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Ord_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Ord_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Ord_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Ord_Date"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Ord_Date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Ord_Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Prod_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Prod_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Cust_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Cust_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Cust_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Cus_No</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Promo_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Promo_ID"
+                      lineageId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output].Columns[Promo_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Promo_Code</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output].Columns[Unit_Price]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Unit_Price</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output].Columns[Total_Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output].Columns[Total_Price]"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Total_Price</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Aggregation for Product\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input].Columns[Prod_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Prod_Name"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input].Columns[Qty]"
+                      cachedDataType="i8"
+                      cachedName="Qty"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_Price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input].Columns[Total_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Total_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_ID]"
+                      name="Prod_ID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Prod_Name]"
+                      name="Prod_Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Qty]"
+                      dataType="i8"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Qty]"
+                      name="Qty">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_Price]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Total_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output].Columns[Total_Price]"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Price]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Sales Aggregation for Product.Paths[Aggregate Output 1]"
+              endId="Package\Sales Aggregation for Product\Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Sales Aggregation for Product\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Sales Aggregation for Product.Paths[Lookup Match Output]"
+              endId="Package\Sales Aggregation for Product\Sales Fact Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Sales Aggregation for Product\Product Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Aggregation for Product.Paths[Lookup Match Output1]"
+              endId="Package\Sales Aggregation for Product\Aggregate.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Sales Aggregation for Product\Sales Fact Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Aggregation for Product.Paths[OLE DB Source Output]"
+              endId="Package\Sales Aggregation for Product\Product Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Sales Aggregation for Product\Orders Dim.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Sales Aggregation for Product.Paths[Sort Output]"
+              endId="Package\Sales Aggregation for Product\Product Sales.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\Sales Aggregation for Product\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Sales Aggregation for Product"
+          TopLeft="239.285718360726,218.705885420208" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sales Aggregation for Product">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Sales Aggregation for Product\Sort"
+          TopLeft="345.714291601765,206.470591130966" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sales Aggregation for Product\Sales Fact Lookup"
+          TopLeft="572.857152612842,54.2941184085133" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Sales Aggregation for Product\Product Lookup"
+          TopLeft="360.714291857214,55.8235301946686" />
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\Sales Aggregation for Product\Orders Dim"
+          TopLeft="86.2142870888419,55.9705889431251" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Sales Aggregation for Product\Product Sales"
+          TopLeft="82.1428585417417,207.235297024044" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Sales Aggregation for Product\Aggregate"
+          TopLeft="537.142866290346,195.764708627879" />
+        <EdgeLayout
+          Id="Package\Sales Aggregation for Product.Paths[Lookup Match Output]"
+          TopLeft="512.714291857214,75.8588243015909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.142860755628,0"
+              Start="0,0"
+              End="52.642860755628,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52.642860755628,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.869956340936,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales Aggregation for Product.Paths[Aggregate Output 1]"
+          TopLeft="537.142866290346,216.564708627879">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.8285746885807,10.7058825030872"
+              Start="0,0"
+              End="-86.3285746885807,10.7058825030872">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-42.9142873442904,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.9142873442904,0"
+                    Point2="-46.9142873442904,0"
+                    Point3="-46.9142873442904,4" />
+                  <mssgle:LineSegment
+                    End="-46.9142873442904,6.70588250308717" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-46.9142873442904,6.70588250308717"
+                    Point2="-46.9142873442904,10.7058825030872"
+                    Point3="-50.9142873442904,10.7058825030872" />
+                  <mssgle:LineSegment
+                    End="-86.3285746885807,10.7058825030872" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales Aggregation for Product.Paths[Sort Output]"
+          TopLeft="345.714291601765,227.652944077505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-121.971433060023,0"
+              Start="0,0"
+              End="-114.471433060023,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-114.471433060023,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales Aggregation for Product.Paths[OLE DB Source Output]"
+          TopLeft="218.214287088842,76.6970595688969">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="142.500004768372,0"
+              Start="0,0"
+              End="135.000004768372,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="135.000004768372,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales Aggregation for Product.Paths[Lookup Match Output1]"
+          TopLeft="654.457152612842,95.8941184085133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-54.114286322496,99.8705902193657"
+              Start="0,0"
+              End="-54.114286322496,92.3705902193657">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.9352951096829" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.9352951096829"
+                    Point2="0,49.9352951096829"
+                    Point3="-4,49.9352951096829" />
+                  <mssgle:LineSegment
+                    End="-50.114286322496,49.9352951096829" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-50.114286322496,49.9352951096829"
+                    Point2="-54.114286322496,49.9352951096829"
+                    Point3="-54.114286322496,53.9352951096829" />
+                  <mssgle:LineSegment
+                    End="-54.114286322496,92.3705902193657" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-75.248529879998,54.9352951096829,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Aggregation for Product\Sales Fact Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Sales_Fact]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Aggregation for Product\Product Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Product_Dim]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Aggregation for Product\Orders Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Aggregation for Product\Product Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

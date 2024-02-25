@@ -1,0 +1,853 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/20/2021 12:11:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-3QUOD1RH"
+  DTS:CreatorName="LAPTOP-3QUOD1RH\ACER"
+  DTS:DTSID="{2F94285E-C0FB-4C18-BEA1-AF8E822B633D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{FDA0685B-B546-4836-B586-3BF3944D3D29}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[iit-student94.database.windows.net.SGDB1.Seyone]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{382501A8-3FCD-469F-B9D2-18C75966B123}"
+      DTS:ObjectName="iit-student94.database.windows.net.SGDB1.Seyone">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=iit-student94.database.windows.net;User ID=Seyone;Initial Catalog=SGDB1;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGobG+/qd00yOxoYVPuOY7gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADLw5Ty4zc/VtxGFz47llX9pQwhr2c+87ITiVYU/tP54QAAAAAOgAAAAAIAACAAAABKqhnKDTyVdOexB3kpbgN5ZGNaQUxXeHMvtFgImOh4WSAAAAC+eS6WNfJ/nzEoWSTiXBNpRlJNdgebNinUX0Jjy9TZYEAAAABE2HqE/Cgn+s3WvoEXoFh7yyMsARx95g/vhHw8fR/UJIkt7WaquP6Fgv4t0WeVwNToVbZYfJ0Is4neI7zCwyPZ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[iit-student94.database.windows.net.SGDB1.Seyone1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{57CE1C62-E53D-40D1-8624-D848A5B4C825}"
+      DTS:ObjectName="iit-student94.database.windows.net.SGDB1.Seyone1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=iit-student94.database.windows.net;User ID=Seyone;Initial Catalog=SGDB1;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGobG+/qd00yOxoYVPuOY7gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACGsQT7bLmeLtO82tQAFwf0yHzChvICXdhsvI8oVL10OwAAAAAOgAAAAAIAACAAAAAMo/tMofuTRcTw5rY2ClYyaBarWC+GOk3U5kBgwT2HliAAAACrIBbAq/zNJUh1kwAeAQGpkUnMwMF/pn42bfo30/jVBEAAAADLjNvScEq5Ilg7rTg+SUlt6n6B23HRFR8LfLrNJdpJQJqbCXuBq71V7pA236fiPMcyw34J3Y4SiUIpgoGdDlnb</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[iit-student94.database.windows.net.SGDB1.Seyone1 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F422D33D-272A-4812-97A8-8DDC0A61BB02}"
+      DTS:ObjectName="iit-student94.database.windows.net.SGDB1.Seyone1 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=iit-student94.database.windows.net;User ID=Seyone;Initial Catalog=SGDB1;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGobG+/qd00yOxoYVPuOY7gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABLSNqhomfYWsHUbiEJwqm23t/sofVnrZdWebHbOwr4VAAAAAAOgAAAAAIAACAAAAD/xoH9P8U2YJtI5wC1xvDAjH0Qi1kqseFioOjOUQVT/iAAAABThoX6WhTiivXKPweqCscAk4USBttVezI4V+VTZFQiJkAAAAAxesh5XLb8Wf/gvSB0bdbiNgZCqzgg4iUv/3/h87Xsmj4wKU9gCca5wglF4vGx18Y5xbPCKHg7DY9O7fCGnQU4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{76B586D5-6FEA-42E9-A42D-36E4E0712979}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore_Target">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-3QUOD1RH;Initial Catalog=ToyStore_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy Dimension to Azure Cloud DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F8396113-9C1A-444F-B1BF-B46BEF887A55}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy Dimension to Azure Cloud DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Sales Data in Azure DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sales_Data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[iit-student94.database.windows.net.SGDB1.Seyone1 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[iit-student94.database.windows.net.SGDB1.Seyone1 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Cus_No]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Cus_No"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Cus_No]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_No]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Cus_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Cus_Name"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Cus_Name]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_Name]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Date_Key]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Date_Key"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Date_Key]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Ord_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Ord_ID"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Ord_ID]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_ID]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Ord_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Ord_Date"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_Date]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_ID]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Prod_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Prod_Name"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Prod_Name]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_Name]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Qty]"
+                      cachedDataType="i4"
+                      cachedName="Qty"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Promo_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Promo_Code"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Promo_Code]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Promo_Code]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="r8"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Unit_Price]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Unit_Price]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Total_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Total_Price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Total_Price]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Store_No]"
+                      cachedDataType="i4"
+                      cachedName="Store_No"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Store_No]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_No]" />
+                    <inputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].Columns[Store_City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Store_City"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Store_City]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_City]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Cus_No]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cus_No" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Cus_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cus_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="wstr"
+                      length="50"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Ord_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      dataType="dbDate"
+                      name="Ord_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Prod_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Promo_Code]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      dataType="r8"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Unit_Price]"
+                      dataType="numeric"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      dataType="numeric"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Store_No]"
+                      dataType="i4"
+                      name="Store_No" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input].ExternalColumns[Store_City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Store_City" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SalesFact from local DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sales_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_No]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Cus_No]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_No]"
+                      name="Cus_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Cus_Name]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Cus_Name]"
+                      name="Cus_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Date_Key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Date_Key]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Ord_ID]"
+                      length="20"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_ID]"
+                      name="Ord_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Ord_Date]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Ord_Date]"
+                      name="Ord_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      name="Prod_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Prod_Name]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Prod_Name]"
+                      name="Prod_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Promo_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Promo_Code]"
+                      length="20"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Promo_Code]"
+                      name="Promo_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Unit_Price]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Total_Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Total_Price]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Total_Price]"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_No]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Store_No]"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_No]"
+                      name="Store_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Store_City]"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].Columns[Store_City]"
+                      name="Store_City"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Cus_No]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cus_No" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Cus_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cus_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Date_Key]"
+                      dataType="wstr"
+                      length="50"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Ord_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Ord_Date]"
+                      dataType="dbDate"
+                      name="Ord_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Prod_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Promo_Code]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="r8"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Unit_Price]"
+                      dataType="numeric"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Total_Price]"
+                      dataType="numeric"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Store_No]"
+                      dataType="i4"
+                      name="Store_No" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output].ExternalColumns[Store_City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Store_City" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Cus_No]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Cus_No]"
+                      name="Cus_No" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Cus_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Cus_Name]"
+                      name="Cus_Name" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Date_Key]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Date_Key]"
+                      name="Date_Key" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Ord_ID]"
+                      name="Ord_ID" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Ord_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Ord_Date]"
+                      name="Ord_Date" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      name="Prod_ID" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Prod_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Prod_Name]"
+                      name="Prod_Name" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Promo_Code]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Promo_Code]"
+                      name="Promo_Code" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="r8"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Total_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Total_Price]"
+                      name="Total_Price"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Store_No]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Store_No]"
+                      name="Store_No" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Store_City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[Store_City]"
+                      name="Store_City" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy Dimension to Azure Cloud DB.Paths[OLE DB Source Output]"
+              endId="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Copy Dimension to Azure Cloud DB"
+          TopLeft="246.614289473028,115.617648603182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy Dimension to Azure Cloud DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB"
+          TopLeft="273.571433230322,27.5294121507955" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB"
+          TopLeft="271.428576050973,222.529414885597" />
+        <EdgeLayout
+          Id="Package\Copy Dimension to Azure Cloud DB.Paths[OLE DB Source Output]"
+          TopLeft="366.300004640647,69.1294121507955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,153.400002734801"
+              Start="0,0"
+              End="0,145.900002734801">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,145.900002734801" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Dimension to Azure Cloud DB\Sales Data in Azure DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Dimension to Azure Cloud DB\SalesFact from local DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

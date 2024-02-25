@@ -1,0 +1,581 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/15/2021 11:55:03 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-3QUOD1RH"
+  DTS:CreatorName="LAPTOP-3QUOD1RH\ACER"
+  DTS:DTSID="{81908C8C-9312-4C38-A5BE-C32033480200}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{F1F01FF9-EE5D-4B34-BD65-32098A46C9FB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A228443F-1482-43AB-A086-EF2EA22C5877}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=53Y0N3-6794;Initial Catalog=ToyStore;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{88AAA2C1-B6D4-434C-A341-574941B6CEA7}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore_Target">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=53Y0N3-6794;Initial Catalog=ToyStore_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Orders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{687EC521-BB2A-4136-A988-71899A544923}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Orders"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Orders\Orders Dim Target"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Orders Dim Target"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Orders_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Orders\Orders Dim Target.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Qty]"
+                      cachedDataType="i4"
+                      cachedName="Qty"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Cust_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Cust_ID"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Cust_ID]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Cust_ID]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Prod_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Prod_ID"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Prod_ID]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Order_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Order_ID"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Ord_ID]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_ID]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Order_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Order_Date"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_Date]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Delivery_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Delivery_Date"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Delv_Date]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Delivery_Date]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].Columns[Promo_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Promo_ID"
+                      externalMetadataColumnId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Promo_ID]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Promo_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Ord_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Ord_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      dataType="dbDate"
+                      name="Ord_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Delv_Date]"
+                      dataType="dbDate"
+                      name="Delv_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Cust_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cust_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input].ExternalColumns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Orders\Orders Dim Target.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders Dim Target.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Dim Target.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Dim Target.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Dim Target.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Orders\Orders Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Orders Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Orders\Orders Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      name="Order_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Date]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Order_Date]"
+                      name="Order_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Delivery_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Delivery_Date]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Delivery_Date]"
+                      name="Delivery_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      name="Cust_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      length="50"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      name="Prod_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Store_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Store_ID]"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Store_ID]"
+                      name="Store_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      name="Promo_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Date]"
+                      dataType="dbDate"
+                      name="Order_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Delivery_Date]"
+                      dataType="dbDate"
+                      name="Delivery_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Cust_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Store_ID]"
+                      dataType="i4"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      name="Order_ID" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Order_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Order_Date]"
+                      name="Order_Date" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Delivery_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Delivery_Date]"
+                      name="Delivery_Date" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      name="Cust_ID" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      name="Prod_ID" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Store_ID]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Store_ID]"
+                      name="Store_ID" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      name="Promo_ID" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Orders.Paths[OLE DB Source Output]"
+              endId="Package\Orders\Orders Dim Target.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Orders\Orders Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Orders"
+          TopLeft="237.142861181376,75.7058834146876" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Orders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Orders\Orders Source"
+          TopLeft="95.7142873442903,33.6470592954167" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Orders\Orders Dim Target"
+          TopLeft="399.78572100036,36.8529416161838" />
+        <EdgeLayout
+          Id="Package\Orders.Paths[OLE DB Source Output]"
+          TopLeft="241.31428734429,56.0500004558003">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="158.47143365607,0"
+              Start="0,0"
+              End="150.97143365607,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="150.97143365607,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders Dim Target">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

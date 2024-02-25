@@ -1,0 +1,860 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/16/2021 12:06:08 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-3QUOD1RH"
+  DTS:CreatorName="LAPTOP-3QUOD1RH\ACER"
+  DTS:DTSID="{57C37164-DAA2-47C5-85C1-B7774D151F24}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{60518DC3-2C04-46C5-80A7-D4385FA61409}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6E24E791-C452-4882-AEE1-8610FAB4447B}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-3QUOD1RH;Initial Catalog=ToyStore;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{665EFC2E-8DEF-4DF4-856E-7F2C23B8B3D2}"
+      DTS:ObjectName="LAPTOP-3QUOD1RH.ToyStore_Target">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-3QUOD1RH;Initial Catalog=ToyStore_Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Date Flow"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{39FCC06B-9756-4D42-BF57-6EA98FB3D423}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Date Flow"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Date Flow\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input].Columns[Order_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Order_Date"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input].Columns[Delivery_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Delivery_Date"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Order_Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Order_Date]"
+                      name="Copy of Order_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Delivery_Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Delivery_Date]"
+                      name="Copy of Delivery_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Flow\Date Dim"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Date Dim"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Date_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Flow\Date Dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore_Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].Columns[Ord_Month]"
+                      cachedDataType="i4"
+                      cachedName="Ord_Month"
+                      externalMetadataColumnId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Month]"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Ord_Month]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].Columns[Order_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Order_Date"
+                      externalMetadataColumnId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].Columns[Delivery_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Delivery_Date"
+                      externalMetadataColumnId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Delv_Date]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].Columns[Date_Key1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Date_Key1"
+                      externalMetadataColumnId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Date_Key1]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Date_Key]"
+                      dataType="wstr"
+                      length="50"
+                      name="Date_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Date]"
+                      dataType="dbDate"
+                      name="Ord_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Delv_Date]"
+                      dataType="dbDate"
+                      name="Delv_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input].ExternalColumns[Ord_Month]"
+                      dataType="i4"
+                      name="Ord_Month" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Flow\Date Dim.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Date Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Date Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Flow\Date Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Date Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Flow\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Flow\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Flow\Derived Column.Inputs[Derived Column Input].Columns[Order_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Order_Date"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Derived Column.Inputs[Derived Column Input].Columns[Delivery_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Delivery_Date"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]" />
+                    <inputColumn
+                      refId="Package\Date Flow\Derived Column.Inputs[Derived Column Input].Columns[Copy of Order_Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of Order_Date"
+                      lineageId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Order_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Flow\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Date Flow\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Date_Key]"
+                      name="Date_Key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("mm",#{Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]}) + [DATEPART]("dd",#{Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("mm",Order_Date) + DATEPART("dd",Delivery_Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Ord_Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Ord_Month]"
+                      name="Ord_Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(Order_Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Date_Key1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Output].Columns[Date_Key1]"
+                      name="Date_Key1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Date Flow\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Order_Date]},"-","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE([Copy of Order_Date],"-","")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Flow\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Date Flow\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Flow\Orders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Orders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Flow\Orders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-3QUOD1RH.ToyStore]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_ID]"
+                      name="Order_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_Date]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Order_Date]"
+                      name="Order_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Delivery_Date]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Delivery_Date]"
+                      name="Delivery_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Cust_ID]"
+                      name="Cust_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      length="50"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Prod_ID]"
+                      name="Prod_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Store_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Store_ID]"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Store_ID]"
+                      name="Store_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].Columns[Promo_ID]"
+                      name="Promo_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Order_Date]"
+                      dataType="dbDate"
+                      name="Order_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Delivery_Date]"
+                      dataType="dbDate"
+                      name="Delivery_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Cust_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Cust_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      name="Prod_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Store_ID]"
+                      dataType="i4"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Output].ExternalColumns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="Promo_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Order_ID]"
+                      name="Order_ID" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Order_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Order_Date]"
+                      name="Order_Date" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Delivery_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Delivery_Date]"
+                      name="Delivery_Date" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Cust_ID]"
+                      name="Cust_ID" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Prod_ID]"
+                      name="Prod_ID" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Store_ID]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Store_ID]"
+                      name="Store_ID" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[Promo_ID]"
+                      name="Promo_ID" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Flow\Orders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Date Flow.Paths[Data Conversion Output]"
+              endId="Package\Date Flow\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Date Flow\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Date Flow.Paths[Derived Column Output]"
+              endId="Package\Date Flow\Date Dim.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Date Flow\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Date Flow.Paths[OLE DB Source Output]"
+              endId="Package\Date Flow\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Date Flow\Orders.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Date Flow"
+          TopLeft="186.428574603431,93.2941189554736" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Date Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Date Flow\Derived Column"
+          TopLeft="521.214294496848,45.2647064400379" />
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Date Flow\Orders"
+          TopLeft="71.4285726449929,44.3529417985039" />
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\Date Flow\Date Dim"
+          TopLeft="329.07143357092,177.735296112443" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Date Flow\Data Conversion"
+          TopLeft="295.71429075027,42.0588241192709" />
+        <EdgeLayout
+          Id="Package\Date Flow.Paths[OLE DB Source Output]"
+          TopLeft="181.028572644993,64.0058829588874">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.685718105277,0"
+              Start="0,0"
+              End="107.185718105277,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="107.185718105277,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Flow.Paths[Derived Column Output]"
+          TopLeft="597.614294496848,86.8647064400379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-207.342860925928,90.8705896724051"
+              Start="0,0"
+              End="-207.342860925928,83.3705896724051">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4352948362025" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4352948362025"
+                    Point2="0,45.4352948362025"
+                    Point3="-4,45.4352948362025" />
+                  <mssgle:LineSegment
+                    End="-203.342860925928,45.4352948362025" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-203.342860925928,45.4352948362025"
+                    Point2="-207.342860925928,45.4352948362025"
+                    Point3="-207.342860925928,49.4352948362025" />
+                  <mssgle:LineSegment
+                    End="-207.342860925928,83.3705896724051" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Flow.Paths[Data Conversion Output]"
+          TopLeft="450.91429075027,64.4617652796544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.3000037465778,0"
+              Start="0,0"
+              End="62.8000037465778,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.8000037465778,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Flow\Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Flow\Date Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
